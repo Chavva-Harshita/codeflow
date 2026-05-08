@@ -3,7 +3,17 @@ import { EditorWorkspacePlaceholder } from '../components/workspace/EditorWorksp
 import { VisualizationPanelPlaceholder } from '../components/workspace/VisualizationPanelPlaceholder'
 import { SidebarPlaceholder } from '../components/workspace/SidebarPlaceholder'
 
+import { useEffect } from 'react'
+
+import { useCodeFlowStore } from '../state/store'
+
 export function PlaygroundPage() {
+  const initTimeline = useCodeFlowStore((s) => s.initSlidingWindowTimeline)
+
+  useEffect(() => {
+    initTimeline()
+  }, [initTimeline])
+
   return (
     <CodeFlowLayout
       sidebar={<SidebarPlaceholder />}
@@ -12,4 +22,6 @@ export function PlaygroundPage() {
     />
   )
 }
+
+
 

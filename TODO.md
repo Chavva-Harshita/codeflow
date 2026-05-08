@@ -1,25 +1,15 @@
-# CodeFlow MVP - TODO
+# CodeFlow — First Execution Simulation (Snapshot + Prediction Loop)
 
-## Phase 0 — Foundation (no business logic)
-- [x] Create Vite + React project scaffold
-- [x] Configure Tailwind CSS (dark mode, base styles)
-- [x] Add basic routing (React Router) with placeholder routes
-- [x] Implement layout system: responsive app shell + sidebar + main workspace
-- [x] Create Zustand store skeletons (types + initial state placeholders)
-- [x] Add Monaco Editor reusable component placeholder (UI only)
-- [x] Add Visualization panel placeholder component (array visualization area placeholder)
-- [x] Add Prediction modal/question component placeholder (UI only)
-- [x] Add reusable UI atoms (Button, Panel, Tabs/StepNav) for consistent styling
-- [ ] Add sample sliding window example loader placeholder (static examples only)
-
-## Phase 1 — Execution engine (business logic)
-- [ ] Implement controlled step engine/state snapshot model
-- [ ] Implement array visualization state mapping
-- [ ] Implement prediction-before-step loop
-- [ ] Add explanation feedback model
-
-## Phase 2 — Educational UX polish
-- [ ] Improve editor/step sync UX
-- [ ] Add timeline replay/back/forward correctness
-- [ ] Add better error messages and state consistency checks
+## Plan
+- [ ] Update `src/state/types.ts` with full `ExecutionSnapshot` shape (line, pointers, sum, window/highlights, prediction Q/A/explanation, step id).
+- [ ] Create mock sliding-window execution timeline: `src/execution/timeline/slidingWindowMockTimeline.ts`.
+- [ ] Add simple execution engine interface (UI-agnostic): `src/execution/engine/executionEngine.ts`.
+- [ ] Expand Zustand store in `src/state/store.ts` to manage timeline, active step, prediction loop, feedback, next/prev/replay.
+- [ ] Replace playground placeholders with interactive components wired to Zustand:
+  - [ ] `src/components/workspace/EditorWorkspacePlaceholder.tsx` (active line highlighting in mock Monaco code block)
+  - [ ] `src/components/workspace/VisualizationPanelPlaceholder.tsx` (array rendering + highlights + window)
+  - [ ] `src/components/workspace/PredictionPanelPlaceholder.tsx` (prediction input + validation + feedback)
+  - [ ] `src/components/workspace/SidebarPlaceholder.tsx` (pointers/sum display + step controls)
+- [ ] Wire timeline initialization in `src/pages/PlaygroundPage.tsx`.
+- [ ] Smoke test in dev server: ensure prediction is required before advancing and feedback appears on incorrect answers.
 
